@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- import bootstrap -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    
+    <style>
+        body {
+            background-color: #f0ecff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- NavBar -->
+        <div>
+            <div class="w-75 mx-auto shadow rounded-3">
+                <nav class="navbar navbar-expand-lg bg-white rounded-3">
+                    <div class="container-fluid ">
+                        <a class="navbar-brand" href="#">Tarmeez</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Profile</a>
+                            </li>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                            
+                        </ul>
+
+                        <button class="btn btn-outline-success mx-2" type="button">Login</button>
+                        <button class="btn btn-outline-primary" type="button">Register</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--// NavBar //-->
+
+        <!-- Main -->
+        <div class=" mt-5">
+
+            <!-- Post -->
+            <div class="card w-75 mx-auto mb-4">
+                <div class="card-header">
+                    <img src="./images/1 - Copy.png" class="rounded-circle border border-3 me-2" style="width: 50px;">
+                    <b>@mahmoud</b>
+                </div>
+                <div class="card-body">
+                    <img src="./images/tree.jpg" class="w-100 object-fit-cover" style="height: 400px;">
+
+                    <h5 class="text-primary fs-6 mt-2">2 min ago</h5>
+                    <h4>Special title treatment</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quos excepturi corrupti a ipsum maxime! Commodi recusandae tempora dolores, temporibus et optio maxime sit officiis dolorem, iure est! Iste, cupiditate!</p>
+                    <hr>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                        </svg>
+                        <span class="fw-medium">(3) Comments</span>
+                    </div>
+                </div>
+            </div>
+            <!--// Post //-->
+
+            <!-- Post -->
+            <div class="card w-75 mx-auto mb-4">
+                <div class="card-header">
+                    <img src="./images/1 - Copy.png" class="rounded-circle border border-3 me-2" style="width: 50px;">
+                    <b>@mahmoud</b>
+                </div>
+                <div class="card-body">
+                    <img src="./images/tree.jpg" class="w-100 object-fit-cover" style="height: 400px;">
+
+                    <h5 class="text-primary fs-6 mt-2">2 min ago</h5>
+                    <h4>Special title treatment</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quos excepturi corrupti a ipsum maxime! Commodi recusandae tempora dolores, temporibus et optio maxime sit officiis dolorem, iure est! Iste, cupiditate!</p>
+                    <hr>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                        </svg>
+                        <span class="fw-medium">(3) Comments</span>
+                    </div>
+                </div>
+            </div>
+            <!--// Post //-->
+
+            <!-- Post -->
+            <div class="card w-75 mx-auto mb-4">
+                <div class="card-header">
+                    <img src="./images/1 - Copy.png" class="rounded-circle border border-3 me-2" style="width: 50px;">
+                    <b>@mahmoud</b>
+                </div>
+                <div class="card-body">
+                    <img src="./images/tree.jpg" class="w-100 object-fit-cover" style="height: 400px;">
+
+                    <h5 class="text-primary fs-6 mt-2">2 min ago</h5>
+                    <h4>Special title treatment</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quos excepturi corrupti a ipsum maxime! Commodi recusandae tempora dolores, temporibus et optio maxime sit officiis dolorem, iure est! Iste, cupiditate!</p>
+                    <hr>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                        </svg>
+                        <span class="fw-medium">(3) Comments</span>
+                    </div>
+                </div>
+            </div>
+            <!--// Post //-->
+
+            
+        </div>
+        <!--// Main //-->
+    </div>
+</body>
+</html>
