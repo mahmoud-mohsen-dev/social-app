@@ -87,10 +87,10 @@ function createPost(postObj, tagsElements) {
   const post = `
         <div class="card w-75 mx-auto mb-4">
             <div class="card-header">
+              <span onclick='goToPostPage(${postObj.author.id})'>
                 <img src="${profileImage}" class="rounded-circle border border-3 me-2" style="width: 40px; height: 40px;">
-                <b onclick='getUserBtnClick(${
-                  postObj.author.id
-                })' style='cursor: pointer;'>${profilenName}</b>
+                <b style='cursor: pointer;'>${profilenName}</b>
+              </span>
                 <button class='btn btn-outline-danger delete-btn' style='float: right; visibility: ${deleteVisibility}' data-bs-toggle="modal" data-bs-target="#delete-modal" onclick='getPostObj(${JSON.stringify(
     postObj
   )})'>Delete</button>
@@ -423,6 +423,10 @@ function goToPostPage(idNumber){
   window.location.href = `./post.html?Post_Id=${idNumber}`
 }
 
+function goToProfilePage(userId) {
+  window.location.href = `./profile.html?userId=${userId}`;
+}
+
 function addComment(postId) {
   if (localStorage.getItem("token") === null) {
     showAlert("You have to sign in", "danger");
@@ -526,11 +530,6 @@ async function deleteBtnClick(){
   } finally {
     showLoader(false);
   }
-}
-
-
-async function getUserBtnClick(userId) {
-  window.location = `/profile.html?userId=${userId}`
 }
 
 async function getUserPosts(userId) {

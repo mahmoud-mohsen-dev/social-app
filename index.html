@@ -169,13 +169,13 @@
                                     <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" onclick="getUserBtnClick(JSON.parse(localStorage.getItem('user')).id)" style="cursor: pointer;">Profile</a>
+                                    <a class="nav-link" onclick="goToProfilePage(JSON.parse(localStorage.getItem('user')).id)" style="cursor: pointer;">Profile</a>
                                 </li>
                             </ul>
 
 
                             <div class="d-flex">
-                                <span id="user-info-container" class="me-3 bg-secondary px-3 rounded-3 text-white py-1"  onclick="getUserBtnClick(JSON.parse(localStorage.getItem('user')).id)" style="cursor: pointer;">
+                                <span id="user-info-container" class="me-3 bg-secondary px-3 rounded-3 text-white py-1"  onclick="goToProfilePage(JSON.parse(localStorage.getItem('user')).id)" style="cursor: pointer;">
                                     <img id="user-image" class="rounded-circle me-1" style="width: 35px; height: 35px;" src="#" alt="user-image">
                                     <span id="user-name" class="fs-6 fw-medium" style="line-height: 3rem;">@useranme</span>
                                 </span>
