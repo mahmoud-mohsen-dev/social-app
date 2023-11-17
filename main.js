@@ -87,9 +87,9 @@ function createPost(postObj, tagsElements) {
   const post = `
         <div class="card w-75 mx-auto mb-4">
             <div class="card-header">
-              <span onclick='goToPostPage(${postObj.author.id})'>
+              <span onclick='goToProfilePage(${postObj.author.id})' style='cursor: pointer;'>
                 <img src="${profileImage}" class="rounded-circle border border-3 me-2" style="width: 40px; height: 40px;">
-                <b style='cursor: pointer;'>${profilenName}</b>
+                <b>${profilenName}</b>
               </span>
                 <button class='btn btn-outline-danger delete-btn' style='float: right; visibility: ${deleteVisibility}' data-bs-toggle="modal" data-bs-target="#delete-modal" onclick='getPostObj(${JSON.stringify(
     postObj
@@ -326,7 +326,7 @@ function getPost() {
     const postConatiner = document.getElementById("post-container");
 
     let {
-      author: { profile_image, name, username },
+      author: { profile_image, name, username, id: user_id },
       image,
       created_at,
       title,
@@ -336,6 +336,7 @@ function getPost() {
       id,
       comments,
     } = post;
+    console.log(post)
 
     if (typeof profile_image === "object") {
       profile_image = "./images/1 - Copy.png";
@@ -375,7 +376,7 @@ function getPost() {
       <div>
         <div class='w-25 mx-auto rounded-2 mb-3 p-2 fw-bold text-center' style='background: transparent;font-size: 1.8rem;color: white;'>${username}'s Post</div>
         <div class="card w-75 mx-auto mb-4">
-            <div class="card-header">
+            <div class="card-header" style='cursor: pointer;' onclick='goToProfilePage(${user_id})'>
                 <img src="${profile_image}" class="rounded-circle border border-3 me-2" style="width: 40px;height: 40px">
                 <b>${name}</b>
             </div>
