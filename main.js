@@ -1,4 +1,4 @@
-
+// console.log('connected')
 const baseUrl = "https://tarmeezacademy.com/api/v1";
 let currentPage = 1;
 let lastPage = 1;
@@ -6,13 +6,12 @@ let lastPage = 1;
 setupUI();
 
 // call only on the home page
-if (window.location.pathname === `/index.html`) {
+if (/\/index.html/g.test(window.location.pathname)) {
   getPosts();
-
 } 
 
 // call only on the profile page
-if (window.location.pathname === "/profile.html") {
+if (/\/profile.html/g.test(window.location.pathname)) {
     setupUI();
     const params = new URLSearchParams(window.location.search)
     const userId = params.get("userId")
@@ -21,8 +20,8 @@ if (window.location.pathname === "/profile.html") {
   }
 
 // call only on the post page
-if (window.location.pathname === `/post.html`) {
-  getPost()
+if (/\/post.html/g.test(window.location.pathname)) {
+  getPost();
 }
 
 window.addEventListener("scroll", () => {
