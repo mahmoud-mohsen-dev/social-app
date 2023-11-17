@@ -14,7 +14,6 @@
     <style>
         body {
             background-color: #f0ecff;
-            
         }
 
         #add-post {
@@ -23,6 +22,11 @@
 
         #add-post:hover {
             background-color: rgba(137, 43, 226, 0.694);
+        }
+
+        #add-comment-text:focus {
+            color: orange;
+            box-shadow: none;
         }
     </style>
 </head>
@@ -97,13 +101,12 @@
         </div>
     </div>
     <!--// Register Modal //-->
-
-    <!-- ============= ADD OR EDIT A POST ============== -->
+    <!-- ============= ADD A POST ============== -->
     <div class="modal fade" id="post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="post-modal-title">Create A New Post</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create A New Post</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -111,7 +114,6 @@
                     <div class="mb-3">
                         <label for="post-title-input" class="col-form-label">Title:</label>
                         <input  type="text" class="form-control" id="post-title-input">
-                        <input type="hidden" id="post-id" data-post-id></input>
                     </div>
                     <div class="mb-3">
                         <label for="post-body-input" class="col-form-label">Body:</label>
@@ -125,33 +127,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" id="post-btn" onclick="postBtnClick()">Create</button>
+                    <button type="button" class="btn btn-success" onclick="postBtnClick()">Create</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- //============= ADD OR EDIT A POST ==============// -->
-
-    <!-- =============== DELETE MODAL =============== -->
-    <div class="modal" tabindex="-1" id="delete-modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Post</h5>
-                    <input type="hidden" id="delete-modal-hidden-input" value="">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Are You Sure To Delete The Post ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="deleteBtnClick()">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //=============== DELETE MODAL ==============// -->
+    <!-- //============= ADD A POST ==============// -->
 
     <!--============== alert ===============-->
     <div id="liveAlertPlaceholder" style="position: fixed; right: 0; bottom: 10px; z-index: 9999;"></div>
@@ -195,12 +176,11 @@
         <!--// NavBar //-->
 
         <!-- Main posts -->
-        <div class="posts mt-5">
-
-            
+        <div id="post-container" class="mt-3">
+        
         </div>
         <!--// Main //-->
-        <div id="add-post" onclick="addBtnClicked()">
+        <div id="add-post" data-bs-toggle="modal" data-bs-target="#post-modal" style="visibility: hidden; cursor: none;">
             +
         </div>
         
