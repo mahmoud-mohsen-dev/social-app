@@ -11,24 +11,8 @@
     <!-- axios library -->
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 
-    <style>
-        body {
-            background-color: #f0ecff;
-        }
-
-        #add-post {
-            width: 40px; height: 40px; position: fixed; right: 10%; bottom: 15%; background-color: blueviolet; color: white; text-align: center; line-height: 1.9rem; font-size: 3rem; border-radius: 50%; cursor: pointer;
-        }
-
-        #add-post:hover {
-            background-color: rgba(137, 43, 226, 0.694);
-        }
-
-        #add-comment-text:focus {
-            color: orange;
-            box-shadow: none;
-        }
-    </style>
+    <!-- css file -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!--======= Modals ========-->
@@ -44,17 +28,17 @@
                     <form>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Username:</label>
-                        <input  id="input-username" type="text" class="form-control" id="recipient-name" value="momo3">
+                        <input  id="input-username" type="text" class="form-control" id="recipient-name">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Password:</label>
-                        <input  id="input-password" type="password" class="form-control" id="recipient-name" value="123456">
+                        <input  id="input-password" type="password" class="form-control" id="recipient-name">
                     </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="loginBtnClick()">Login</button>
+                    <button type="button" class="btn btn-success" onclick="loginBtnClick()">Login</button>
                 </div>
             </div>
         </div>
@@ -95,7 +79,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" onclick="registerBtnClick()">Register</button>
+                    <button type="button" class="btn btn-primary" onclick="registerBtnClick()">Register</button>
                 </div>
             </div>
         </div>
@@ -136,7 +120,15 @@
 
     <!--============== alert ===============-->
     <div id="liveAlertPlaceholder" style="position: fixed; right: 0; bottom: 10px; z-index: 9999;"></div>
-
+    <!-- LOADER -->
+    <div id="loader" style="position: fixed;left: 0; right: 0; top: 0; bottom: 0; margin: 0 auto ; display: flex; justify-content: center; align-items: center; z-index: 9999;">
+        <div style="background-color: rgba(172, 169, 169, 0.511); border-radius: 30px; padding: 5px">
+            <div class="lds-facebook">
+                <div></div><div></div><div></div>
+            </div>
+        </div>
+    </div>
+    <!-- //LOADER// -->
 
     <div class="container">
         <!-- NavBar -->
@@ -144,29 +136,29 @@
             <div class="w-75 mx-auto shadow rounded-3">
                 <nav class="navbar navbar-expand-lg bg-white rounded-3">
                     <div class="container-fluid ">
-                        <a class="navbar-brand" href="./index.html">Tarmeez</a>
+                        <a class="navbar-brand" href="./index.html">Social</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="./index.html" onclick="getUserPosts()">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Profile</a>
+                                    <a class="nav-link" onclick="getUserBtnClick(JSON.parse(localStorage.getItem('user')).id)" style="cursor: pointer;">Profile</a>
                                 </li>
                             </ul>
 
 
                             <div class="d-flex">
-                                <span id="user-info-container" class="me-3 bg-secondary px-3 rounded-3 text-white py-1">
+                                <span id="user-info-container" class="me-3 bg-secondary px-3 rounded-3 text-white py-1" onclick="getUserBtnClick(JSON.parse(localStorage.getItem('user')).id)" style="cursor: pointer;">
                                     <img id="user-image" class="rounded-circle me-1" style="width: 35px; height: 35px;" src="#" alt="user-image">
                                     <span id="user-name" class="fs-6 fw-medium" style="line-height: 3rem;">@useranme</span>
                                 </span>
-                                <button id="login-btn" class="btn btn-outline-success mx-2 my-2" data-bs-toggle="modal" data-bs-target="#login-modal" type="button">Login</button>
-                                <button id='register-btn' class="btn btn-outline-primary my-2" data-bs-toggle="modal" data-bs-target="#register-modal" type="button">Register</button>
-                                <button id='sign-out-btn' class="btn btn-outline-danger my-2" type="button" onclick="onSignOut()">Sign Out</button>
+                                <button id="login-btn" class="btn btn-success mx-2 my-2" data-bs-toggle="modal" data-bs-target="#login-modal" type="button">Login</button>
+                                <button id='register-btn' class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#register-modal" type="button">Register</button>
+                                <button id='sign-out-btn' class="btn btn-danger my-2" type="button" onclick="onSignOut()">Sign Out</button>
                             </div>
                         </div>
                     </div>

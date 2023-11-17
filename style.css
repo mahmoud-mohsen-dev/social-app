@@ -1,0 +1,111 @@
+body {
+    background-image: linear-gradient(to left bottom, #050e37, #0d235f, #15388b, #184fba, #1268eb); 
+    /* color: white; */
+}
+p {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.h4, h4 {
+    font-size: 2rem;
+}
+
+#user-info-title {
+    color: navajowhite;
+}
+
+#add-post {
+    width: 40px; height: 40px;
+    position: fixed;
+    right: 10%; bottom: 15%; 
+    background-color: #7aa2cc; 
+    color: white; 
+    text-align: center; 
+    line-height: 1.9rem; 
+    font-size: 3rem; 
+    border-radius: 
+    50%; cursor: pointer;
+}
+
+#add-post:hover {
+    background-color: #7aa2cca1;
+}
+/* LOADER STYLES */
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #fff;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+@keyframes lds-facebook {
+0% {
+    top: 8px;
+    height: 64px;
+}
+50%, 100% {
+    top: 24px;
+    height: 32px;
+}}
+/* //LOADER STYLES// */
+
+.card {
+    background: #ffffff42;
+    color: white;
+}
+
+a.navbar-brand {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.navbar {
+    background: #8db8dfd9 !important;
+    /* color: white !important; */
+    margin-top: 1px;
+}
+
+.nav-item .nav-link {
+    color: white !important;
+    font-weight: 700;
+}
+
+span#user-info-container {
+    cursor: pointer;
+    display: block;
+    background: #fffffff7 !important;
+    color: #0c0505 !important;
+    transition: all;
+}
+
+span#user-info-container:hover {
+    background: #607D8B !important;
+    color: white !important;
+    transition: .1s;
+}
+
+h5.text-primary.fs-6.mt-2 {
+    color: #ffe600 !important;
+}

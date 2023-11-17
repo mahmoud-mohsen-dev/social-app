@@ -1,14 +1,24 @@
+
 const baseUrl = "https://tarmeezacademy.com/api/v1";
 let currentPage = 1;
 let lastPage = 1;
 
-  setupUI();
+setupUI();
 
 // call only on the home page
 if (window.location.pathname === `/index.html`) {
   getPosts();
 
 } 
+
+// call only on the profile page
+if (window.location.pathname === "/profile.html") {
+    setupUI();
+    const params = new URLSearchParams(window.location.search)
+    const userId = params.get("userId")
+    // console.log(userId);
+    getUserPosts(userId)
+  }
 
 // call only on the post page
 if (window.location.pathname === `/post.html`) {
@@ -27,6 +37,7 @@ window.addEventListener("scroll", () => {
 async function getPosts (page = 1){
     
     try {
+        showLoader(true);
         const response = await axios.get(`${baseUrl}/posts?limit=5&page=${page}`);
         const posts = response.data.data;
         const postsElement = document.querySelector(".posts")
@@ -46,12 +57,28 @@ async function getPosts (page = 1){
         console.log(err)
         showAlert(err.response.data.message, "danger");
         
+    } finally {
+      showLoader(false);
     }
 }
 
 function createPost(postObj, tagsElements) {
-  if (typeof postObj.author.profile_image === "object") {
-    postObj.author.profile_image = "./images/1 - Copy.png";
+  let profileImage = "";
+  let profilenName = "";
+  const isAuthor = postObj.author !== undefined;
+
+  if (isAuthor) {
+    profileImage = postObj.author.profile_image;
+    profilenName = postObj.author.name;
+  } else {
+    profileImage = postObj.profile_image;
+    profilenName = postObj.name;
+  }
+
+  // console.log(postObj);
+  // console.log(profilenName);
+  if (typeof profileImage === "object") {
+    profileImage = "./images/1 - Copy.png";
   }
 
   if (typeof postObj.image === "object") {
@@ -64,22 +91,25 @@ function createPost(postObj, tagsElements) {
 
   const authorId = postObj.author.id;
   const userId = JSON.parse(localStorage.getItem("user"));
-  let isUserIsTheAuthor = authorId === userId.id;
+  let isUserIsTheAuthor = ''
+  if (userId === null){
+    isUserIsTheAuthor = false
+  } else {
+    isUserIsTheAuthor = authorId === userId.id;
+  }
 
   let editVisibility = "visible;";
-  let deleteVisibility = 'visible;';
+  let deleteVisibility = "visible;";
   if (!isUserIsTheAuthor) {
     editVisibility = "hidden;";
-    deleteVisibility = 'hidden;'
+    deleteVisibility = "hidden;";
   }
 
   const post = `
         <div class="card w-75 mx-auto mb-4">
             <div class="card-header">
-                <img src="${
-                  postObj.author.profile_image
-                }" class="rounded-circle border border-3 me-2" style="width: 40px; height: 40px;">
-                <b>${postObj.author.name}</b>
+                <img src="${profileImage}" class="rounded-circle border border-3 me-2" style="width: 40px; height: 40px;">
+                <b onclick='getUserBtnClick(${postObj.author.id})' style='cursor: pointer;'>${profilenName}</b>
                 <button class='btn btn-outline-danger delete-btn' style='float: right; visibility: ${deleteVisibility}' data-bs-toggle="modal" data-bs-target="#delete-modal" onclick='getPostObj(${JSON.stringify(
     postObj
   )})'>Delete</button>
@@ -135,6 +165,7 @@ async function registerBtnClick() {
   formdata.append("image", fileInput);
 
   try {
+    showLoader(true);
     const response = await axios.post(baseUrl + "/register", formdata, config);
     const responseData = response.data;
     // console.log(response);
@@ -151,6 +182,8 @@ async function registerBtnClick() {
   } catch (err) {
     // console.log(err.response.data.message);
     showAlert(err.response.data.message, "danger");
+  } finally {
+    showLoader(false);
   }
 }
 
@@ -170,6 +203,7 @@ async function loginBtnClick(){
     } 
     
     try {
+        showLoader(true);
         const response = await axios.post(baseUrl + "/login", data,  config)
         const responseData = response.data;
 
@@ -184,6 +218,8 @@ async function loginBtnClick(){
     } catch (err){
         console.log(err)
         showAlert(err.response.data.message, "danger");
+    } finally {
+      showLoader(false);
     }
 }
 
@@ -256,6 +292,7 @@ async function postBtnClick(){
     const postHolder = document.querySelector("#post-id");
 
     try {
+
       const formData = new FormData();
       formData.append("title", title);
       formData.append("body", body);
@@ -277,7 +314,7 @@ async function postBtnClick(){
       } else {
         url = `${baseUrl}/posts`;
       }
-
+      showLoader(true);
       await axios.post(url, formData, config);
       const modal = document.getElementById("post-modal");
       const modalInstance = bootstrap.Modal.getInstance(modal);
@@ -288,6 +325,8 @@ async function postBtnClick(){
     } catch (err) {
       // console.log(err);
       showAlert(err.response.data.message, "danger");
+    } finally {
+      showLoader(false);
     }
 }
 
@@ -296,10 +335,12 @@ function getPost() {
   const params = new URLSearchParams(search)
   const postId = params.get('Post_Id')
 
+  showLoader(true);
   const getPost = axios.get(
     `${baseUrl}/posts/${postId}`
   );
   getPost.then((response) => {
+
     const post = response.data.data;
     const postConatiner = document.getElementById("post-container");
 
@@ -351,7 +392,7 @@ function getPost() {
 
     postConatiner.innerHTML = `
       <div>
-        <div class='w-25 mx-auto bg-light rounded-2 mb-3 p-2 fw-bold text-center'>${username}'s Post</div>
+        <div class='w-25 mx-auto rounded-2 mb-3 p-2 fw-bold text-center' style='background: transparent;font-size: 1.8rem;color: white;'>${username}'s Post</div>
         <div class="card w-75 mx-auto mb-4">
             <div class="card-header">
                 <img src="${profile_image}" class="rounded-circle border border-3 me-2" style="width: 40px;height: 40px">
@@ -360,7 +401,7 @@ function getPost() {
             <div class="card-body">
                 <img src="${image}" class="w-100 object-fit-cover" style="height: 400px;">
 
-                <h5 class="text-primary fs-6 mt-2">${created_at}</h5>
+                <h5 class="text-primary fs-6 mt-2" style='color: chartreuse !important;'>${created_at}</h5>
                 <h4>${title}</h4>
                 <p>${body}</p>
                 <hr>
@@ -377,7 +418,7 @@ function getPost() {
                 </div>
                 <div  id='add-comment' class="input-group mt-3">
                   <input type="text" class="form-control" placeholder="add your comment..." id='add-comment-text'>
-                  <button class="btn btn-outline-secondary" type="button" id="add-comment-btn" onclick='addComment(${id})'>Send</button>
+                  <button class="btn btn-warning" type="button" id="add-comment-btn" onclick='addComment(${id})'>Send</button>
                 </div>
             </div>
         </div>
@@ -389,7 +430,12 @@ function getPost() {
       const commentDiv = document.getElementById("add-comment");
       commentDiv.style.display = "none";
     }
-  });
+  }).catch((err) => {
+    console.log(err.response.data.message);
+    showAlert(err.response.data.message, "danger");
+  }).finally(() => {
+    showLoader(false);
+  })
 }
 
 function goToPostPage(idNumber){
@@ -407,6 +453,7 @@ function addComment(postId) {
     body: commentText,
   };
 
+  showLoader(true);
   axios
     .post(`${baseUrl}/posts/${postId}/comments`, body, {
       headers: {
@@ -414,14 +461,16 @@ function addComment(postId) {
       }
     })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       showAlert("Your Comment Successfully Added", "success");
       setTimeout(() => location.reload(), 1500)
     })
     .catch((err) =>{ 
       console.log(err)
       showAlert(err.response.data.message, "danger");
-    });
+    }).finally(() => {
+      showLoader(false);
+    })
 }
 
 
@@ -472,6 +521,7 @@ async function deleteBtnClick(){
   const postId = document.getElementById("delete-modal-hidden-input").value;
   console.log(postId)
   try {
+    showLoader(true);
     const response = await axios.delete(
       `${baseUrl}/posts/${postId}`,
       {
@@ -492,5 +542,105 @@ async function deleteBtnClick(){
   } catch(err) {
     console.log(err.response.data.message)
     showAlert(err.response.data.message, 'danger')
+  } finally {
+    showLoader(false);
   }
 }
+
+
+async function getUserBtnClick(userId) {
+  window.location = `/profile.html?userId=${userId}`
+}
+
+async function getUserPosts(userId) {
+  if (userId === null || userId === '' || userId === undefined){
+    userId = JSON.parse(localStorage.getItem('user')).id
+  }
+  // console.log(userId)
+
+  function promiseFunctions(){
+    return Promise.resolve(userInfo(userId));
+  }
+
+  promiseFunctions().then(() => userBody(userId)).catch(err => console.log(err))
+  
+}
+
+
+async function userInfo(userId) {
+  try {
+    showLoader(true);
+
+    const response = await axios.get(`${baseUrl}/users/${userId}`);
+    // console.log(response)
+    const user = response.data.data;
+
+    const profileImage = document.getElementById("header-image");
+
+    if (typeof user.profile_image === "object") {
+      profileImage.src = "./images/1 - copy.png";
+    } else {
+      profileImage.src = user.profile_image;
+    }
+    // console.log(profileImage.src)
+    const profileEmail = document.getElementById("user-info-email");
+    profileEmail.innerHTML = user.email;
+
+    const profileUserName = document.getElementById("user-info-username");
+    profileUserName.innerHTML = user.username;
+
+    const profileName = document.getElementById("user-info-name");
+    profileName.innerHTML = user.name;
+
+    const postsCount = document.getElementById("user-info-count-posts");
+    postsCount.innerHTML = user.posts_count;
+
+    const commentsCount = document.getElementById("user-info-count-comments");
+    commentsCount.innerHTML = user.comments_count;
+
+    const userHeader = document.getElementById("user-info-title");
+    userHeader.innerHTML = user.name + "'s posts";
+
+    // getUserPosts(userId);
+  } catch (err) {
+    console.log(err);
+    showAlert(err.response.data.message, "danger");
+  } finally{
+    showLoader(false);
+  }
+}
+
+async function userBody(userId) {
+  try {
+    showLoader(true);
+    const response = await axios.get(`${baseUrl}/users/${userId}/posts`);
+    const posts = response.data.data;
+    const postsElement = document.querySelector("#profile-posts");
+
+    posts.forEach((post) => {
+      const tagsElements = post.tags
+        .map(
+          (tag) =>
+            `<span class='tag bg-secondary m-1 p-2 rounded text-white fw-medium'>${tag.name}</span>`
+        )
+        .join("");
+      // console.log(post);
+      postsElement.innerHTML += createPost(post, tagsElements);
+    });
+  } catch (err) {
+    console.log(err);
+    showAlert(err.response.data.message, "danger");
+  } finally {
+    showLoader(false);
+  }
+}
+
+function showLoader(show = true){
+  if (show){
+    document.getElementById('loader').style.visibility = "visible";
+  } else {
+    document.getElementById("loader").style.visibility = "hidden";
+  }
+}
+
+
