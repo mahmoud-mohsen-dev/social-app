@@ -530,7 +530,7 @@ async function deleteBtnClick(){
 
 
 async function getUserBtnClick(userId) {
-  window.location = `/profile.html?userId=${userId}`
+  window.location.href = `/profile.html?userId=${userId}`
 }
 
 async function getUserPosts(userId) {
