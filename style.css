@@ -83,7 +83,6 @@ a.navbar-brand {
 
 .navbar {
     background: #8db8dfd9 !important;
-    /* color: white !important; */
     margin-top: 1px;
 }
 
@@ -108,4 +107,15 @@ span#user-info-container:hover {
 
 h5.text-primary.fs-6.mt-2 {
     color: #ffe600 !important;
+}
+
+div.container {
+    padding: 0 !important;
+}
+
+
+@media only screen and (min-width: 992px){
+    div.container {
+        max-width: 850px !important;
+    }
 }

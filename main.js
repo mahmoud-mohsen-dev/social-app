@@ -85,7 +85,7 @@ function createPost(postObj, tagsElements) {
   }
 
   const post = `
-        <div class="card w-75 mx-auto mb-4">
+        <div class="card mx-1 mb-4">
             <div class="card-header">
               <span onclick='goToProfilePage(${postObj.author.id})' style='cursor: pointer;'>
                 <img src="${profileImage}" class="rounded-circle border border-3 me-2" style="width: 40px; height: 40px;">
@@ -374,8 +374,8 @@ function getPost() {
 
     postConatiner.innerHTML = `
       <div>
-        <div class='w-25 mx-auto rounded-2 mb-3 p-2 fw-bold text-center' style='background: transparent;font-size: 1.8rem;color: white;'>${username}'s Post</div>
-        <div class="card w-75 mx-auto mb-4">
+        <div class='text-center mx-auto rounded-2 mb-3 p-2 fw-bold text-center' style='background: transparent;font-size: 1.8rem;color: white;'>${username}'s Post</div>
+        <div class="card mx-1 mb-4">
             <div class="card-header" style='cursor: pointer;' onclick='goToProfilePage(${user_id})'>
                 <img src="${profile_image}" class="rounded-circle border border-3 me-2" style="width: 40px;height: 40px">
                 <b>${name}</b>
