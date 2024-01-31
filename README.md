@@ -6,7 +6,7 @@
 
 ## Try it Live!
 
-Check out the live app [social-app](https://mahmoud-mohsen-dev.github.io/social-media-app/)
+Check out the live app [social-app](https://mahmoud-mohsen-dev.github.io/social-app/)
 
 ## How to Use
 
@@ -66,19 +66,26 @@ Dealing with promises and when to update the data was a challenge for me. And wh
 1. Clone this repository.
 
     ```bash
-    git clone https://github.com/mahmoud-mohsen-dev/social-media-app.git
+    git clone https://github.com/mahmoud-mohsen-dev/social-app.git
     ```
 
 2. Navigate to the Project Directory:
     ```bash
-    cd social-media-app
+    cd social-app
     ```
 3. Install Dependencies:
 
     ```bash
      npm install
     ```
+4. Start the Development Server:
 
-4. Launch the project with the live server or just open it in your browser.
+    ```bash
+    npm run dev
+    ```
+
+5. Open in your Browser:
+
+    Open your web browser and go to http://localhost:3000 to see the app in action.
 
 _Now you have the "social" app on your local machine._
