@@ -1,6 +1,6 @@
 # Social App 📱
 
-> The "Social App" is a dynamic web platform enabling users to connect, create, and engage with posts, comments, and profile information through a user-friendly interface.
+> A social platform enabling users to connect, create, and engage with posts, and comments through a user-friendly interface.
 
 <img src='./images/social-media-app.png'></img>
 
@@ -24,33 +24,33 @@ Check out the live app [social-app](https://mahmoud-mohsen-dev.github.io/social-
 
 4. **Delete a Post:**
 
-    - On the top right corner, click on the delete button. Note that you can only delete your own posts.
+    - On the top right corner, click on the delete button. Note that you can only delete your posts.
 
 5. **Edit a Post:**
 
-    - On the top right corner, click on the edit button. You can only edit your own posts.
+    - On the top right corner, click on the edit button. You can only edit your posts.
 
 6. **See Profile Info:**
-    - View your own profile info by clicking on the `profile` tab.
+    - View your profile info by clicking on the `profile` tab.
     - See other people's info by clicking on the `avatar photo` on the top left of each post.
 
 ## Features
 
 -   View other people's posts in guest mode, but you can't comment on them or add a post.
 
--   Sign in , up and out each with it's own request to the api
--   Create , update and delete posts and comment to other pople posts
--   View and update profile info
--   See other people profile info (their `user_name` ,`avatar photo` and `email`. Counts the `comments` and `posts` they published)
+-   Sign in, up, and out each with its request to the API.
+-   Create, update, and delete posts and comment on other people's posts.
+-   View and update profile info.
+-   See other people's profile info, including their `user_name`, `avatar photo`, `email`, and The total number of `comments`, and `posts` they published.
 
 ## Challenges
 
-Dealing with promises and when to update the data was a challange for me. And what method to use to get what i want from the api.
+Dealing with promises and when to update the data was a challenge for me. And what method to use to get what I want from the API.
 
-**How i tackled this challenge**
+**How I tackled this challenge**
 
-1. Read the documentation of tarmeez api to understand what method to use like (get, post, update, patch, delete).
-2. Reviewing the concepts of promises to better deal with fetching data or any asyncronize operations.
+1. Read the documentation of Tarmeez API to understand the appropriate methods (such as get, post, update, patch, and delete).
+2. Reviewed the concepts of promises to better manage asynchronous operations.
 
 ## Tools Used
 
@@ -79,6 +79,6 @@ Dealing with promises and when to update the data was a challange for me. And wh
      npm install
     ```
 
-4. Launch the project with live server or just open it in your browser.
+4. Launch the project with the live server or just open it in your browser.
 
-_Now you have the "social" app up and running on your local machine._
+_Now you have the "social" app on your local machine._
