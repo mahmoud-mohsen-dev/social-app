@@ -79,6 +79,6 @@ Dealing with promises and when to update the data was a challenge for me. And wh
      npm install
     ```
 
-4. Launch the project with the live server or just open it in your browser.
+4. Launch the project with live server or just open it in your browser.
 
 _Now you have the "social" app on your local machine._
