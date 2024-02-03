@@ -6,7 +6,7 @@
 
 ## Try it Live!
 
-Check out the live app [social-app](https://mahmoud-mohsen-dev.github.io/social-app/)
+Check out the live app [social-app](https://social-app-platform.vercel.app/)
 
 ## How to Use
 
@@ -78,14 +78,7 @@ Dealing with promises and when to update the data was a challenge for me. And wh
     ```bash
      npm install
     ```
-4. Start the Development Server:
 
-    ```bash
-    npm run dev
-    ```
-
-5. Open in your Browser:
-
-    Open your web browser and go to http://localhost:3000 to see the app in action.
+4. Launch the project with the live server or just open it in your browser.
 
 _Now you have the "social" app on your local machine._

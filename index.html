@@ -16,6 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- css file -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- vercel analytics -->
+    <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
     <!--======= Modals ========-->
@@ -31,11 +37,11 @@
                     <form>
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Username:</label>
-                        <input  id="input-username" type="text" class="form-control" id="recipient-name">
+                        <input  id="input-username" type="text" class="form-control" id="recipient-name" value="demo1">
                     </div>
                     <div class="mb-3">
                         <label for="message-text" class="col-form-label">Password:</label>
-                        <input  id="input-password" type="password" class="form-control" id="recipient-name">
+                        <input  id="input-password" type="password" class="form-control" id="recipient-name" value="test1234">
                     </div>
                     </form>
                 </div>
